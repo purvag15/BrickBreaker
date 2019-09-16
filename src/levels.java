@@ -93,7 +93,8 @@ public class levels extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(60, 200, 564, 208);
 
-        jButton4.setFont(new java.awt.Font("Ink Free", 1, 20)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Knob Left.png"))); // NOI18N
         jButton4.setText("BACK");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +102,7 @@ public class levels extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(50, 500, 87, 35);
+        jButton4.setBounds(40, 470, 140, 50);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/bg.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");

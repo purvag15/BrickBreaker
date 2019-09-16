@@ -70,56 +70,74 @@ public class Homescr extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(692, 592));
         jPanel1.setLayout(null);
 
+        jButton1.setBackground(new java.awt.Color(102, 102, 102));
         jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 22)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Knob Play Green.png"))); // NOI18N
         jButton1.setText("PLAY");
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(301, 268, 85, 41);
+        jButton1.setBounds(280, 280, 140, 41);
 
+        jButton2.setBackground(new java.awt.Color(102, 102, 102));
         jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 22)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Knob Help.png"))); // NOI18N
         jButton2.setText("HOW TO PLAY");
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(250, 482, 189, 41);
+        jButton2.setBounds(240, 480, 230, 41);
 
+        jButton3.setBackground(new java.awt.Color(102, 102, 102));
         jButton3.setFont(new java.awt.Font("Comic Sans MS", 0, 22)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Knob Remove.png"))); // NOI18N
         jButton3.setText("LEVELS");
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(287, 337, 113, 41);
+        jButton3.setBounds(270, 340, 160, 41);
 
+        jButton4.setBackground(new java.awt.Color(102, 102, 102));
         jButton4.setFont(new java.awt.Font("Comic Sans MS", 0, 22)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Knob Favorite.png"))); // NOI18N
         jButton4.setText("SCORES");
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(279, 410, 121, 41);
+        jButton4.setBounds(270, 410, 157, 41);
 
-        jButton5.setFont(new java.awt.Font("Ink Free", 1, 20)); // NOI18N
+        jButton5.setBackground(new java.awt.Color(102, 102, 102));
+        jButton5.setFont(new java.awt.Font("Comic Sans MS", 1, 20)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Knob Info.png"))); // NOI18N
         jButton5.setText("CREDITS");
         jPanel1.add(jButton5);
-        jButton5.setBounds(10, 541, 119, 35);
+        jButton5.setBounds(20, 540, 180, 41);
 
-        jButton6.setFont(new java.awt.Font("Ink Free", 1, 20)); // NOI18N
+        jButton6.setBackground(new java.awt.Color(102, 102, 102));
+        jButton6.setFont(new java.awt.Font("Comic Sans MS", 1, 20)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(240, 240, 240));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Knob Cancel.png"))); // NOI18N
         jButton6.setText("LOGOUT");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +145,7 @@ public class Homescr extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton6);
-        jButton6.setBounds(550, 541, 119, 35);
+        jButton6.setBounds(499, 541, 170, 41);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/bg.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
