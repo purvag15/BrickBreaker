@@ -105,7 +105,7 @@ public class login extends javax.swing.JFrame {
         );
 
         jPanel2.add(jPanel1);
-        jPanel1.setBounds(46, 176, 587, 228);
+        jPanel1.setBounds(46, 176, 587, 239);
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 0, 22)); // NOI18N
         jButton1.setText("Submit");
@@ -119,18 +119,19 @@ public class login extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/1234.jpeg"))); // NOI18N
         jLabel4.setText("jLabel4");
+        jLabel4.setPreferredSize(new java.awt.Dimension(692, 592));
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(0, 0, 700, 580);
+        jLabel4.setBounds(0, 0, 692, 592);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
         );
 
         pack();
@@ -140,7 +141,9 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
     static String userid;
+    static String name;
     static String passwd;
+    
 
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -148,20 +151,24 @@ public class login extends javax.swing.JFrame {
         Connection myconObj = null;
         Statement mystatObj = null;
         ResultSet myresObj = null;
+        
         String query = "Select * from PURVA.login";
-//        String url;
-//        String pass;
+       
         int flag = 0;
         try {
             myconObj = DriverManager.getConnection("jdbc:derby://localhost:1527/BrickBreak", "purva", "purva");
             mystatObj = myconObj.createStatement();
             myresObj = mystatObj.executeQuery(query);
+            //mystatObj.executeQuery(querylogin);
+            
             while (myresObj.next()) {
                 userid = myresObj.getString("USERID");
                 passwd = myresObj.getString("PSWD");
+                name = myresObj.getString("NAME");
+                
                 //System.out.println(userid + "\t" + passwd);
 //            }
-
+                //i++;
                 String uname = jTextField2.getText();
                 char[] pwd = jPasswordField1.getPassword();
                 String password = new String(pwd);
@@ -169,11 +176,11 @@ public class login extends javax.swing.JFrame {
                 //System.out.println(userid + passwd);
                 if (uname.equals(userid) && password.equals(passwd)) {
                     flag = 1;
-
+                    break;
                 }
             }
             if (flag == 1) {
-                JOptionPane.showMessageDialog(null, "Login Successful");
+                JOptionPane.showMessageDialog(null, "Welcome "+name);
 //                login l1 = new login();
 //                l1.setVisible(false);
                 //close();
