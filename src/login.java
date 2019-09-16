@@ -61,7 +61,6 @@ public class login extends javax.swing.JFrame {
         jPanel2.add(jLabel1);
         jLabel1.setBounds(248, 99, 183, 51);
 
-        jPanel1.setBackground(new java.awt.Color(255, 102, 102));
         jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 22)); // NOI18N
@@ -132,7 +131,7 @@ public class login extends javax.swing.JFrame {
         jLabel4.setText("jLabel4");
         jLabel4.setPreferredSize(new java.awt.Dimension(692, 592));
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(-200, -8, 920, 660);
+        jLabel4.setBounds(-170, 0, 920, 660);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

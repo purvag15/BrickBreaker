@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
@@ -22,6 +23,8 @@ public class Homescr extends javax.swing.JFrame {
      */
     public Homescr() {
         initComponents();
+               
+
     }    
 /**
  * function to close the screen after switching scenes
@@ -59,10 +62,13 @@ public class Homescr extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setMinimumSize(new java.awt.Dimension(692, 592));
         jPanel1.setPreferredSize(new java.awt.Dimension(692, 592));
+        jPanel1.setLayout(null);
 
         jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 22)); // NOI18N
         jButton1.setText("PLAY");
@@ -72,6 +78,8 @@ public class Homescr extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(301, 268, 85, 41);
 
         jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 22)); // NOI18N
         jButton2.setText("HOW TO PLAY");
@@ -81,6 +89,8 @@ public class Homescr extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton2);
+        jButton2.setBounds(250, 482, 189, 41);
 
         jButton3.setFont(new java.awt.Font("Comic Sans MS", 0, 22)); // NOI18N
         jButton3.setText("LEVELS");
@@ -90,6 +100,8 @@ public class Homescr extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton3);
+        jButton3.setBounds(287, 337, 113, 41);
 
         jButton4.setFont(new java.awt.Font("Comic Sans MS", 0, 22)); // NOI18N
         jButton4.setText("SCORES");
@@ -99,9 +111,13 @@ public class Homescr extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton4);
+        jButton4.setBounds(279, 410, 121, 41);
 
         jButton5.setFont(new java.awt.Font("Ink Free", 1, 20)); // NOI18N
         jButton5.setText("CREDITS");
+        jPanel1.add(jButton5);
+        jButton5.setBounds(10, 541, 119, 35);
 
         jButton6.setFont(new java.awt.Font("Ink Free", 1, 20)); // NOI18N
         jButton6.setText("LOGOUT");
@@ -110,50 +126,14 @@ public class Homescr extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton6);
+        jButton6.setBounds(550, 541, 119, 35);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(301, 301, 301)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(279, 279, 279)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton4)
-                            .addComponent(jButton3)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(jButton2)))
-                .addGap(253, 253, 253))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6)
-                .addGap(23, 23, 23))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(268, 268, 268)
-                .addComponent(jButton1)
-                .addGap(28, 28, 28)
-                .addComponent(jButton3)
-                .addGap(32, 32, 32)
-                .addComponent(jButton4)
-                .addGap(31, 31, 31)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/bg.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        jLabel4.setPreferredSize(new java.awt.Dimension(692, 592));
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(-170, 0, 920, 660);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -235,6 +215,7 @@ public class Homescr extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
