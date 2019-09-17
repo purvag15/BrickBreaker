@@ -29,7 +29,6 @@ public class Level extends JPanel implements KeyListener,ActionListener,MouseMot
 {
     private boolean play=false;//play is true when we have pressed the left or right button
     static int levelNo;
-    Slider s;
     private Timer timer;
     private int delay=4;//on decreasing delay variable speed of ball increases
     Level()
@@ -45,25 +44,6 @@ public class Level extends JPanel implements KeyListener,ActionListener,MouseMot
     void setLevelNo()
     {
         levelNo=1;
-    }
-    @Override
-    public void paint(Graphics g)//Graphic is an abstract super class
-    {
-        System.out.println("Paint method was called");
-        setLevelNo();
-        //setBackground(g);
-        addSlider(g);
-        g.dispose();//Releases the graphics resources
-    }
-    public void setBackground(Graphics g)
-    {
-        BackAndBorder b=new BackAndBorder();
-        b.addBackgroundColor(g);
-    }
-    void addSlider(Graphics g)
-    {
-        Slider s=new Slider();
-        s.createSlider(g,310);
     }
 
     @Override
@@ -88,10 +68,7 @@ public class Level extends JPanel implements KeyListener,ActionListener,MouseMot
     public void actionPerformed(ActionEvent e) 
     {
         timer.start();
-        if (play)
-        {
-            s.sliderOpertion(300, 300, 20);
-        }
+        
         repaint();
     }
 

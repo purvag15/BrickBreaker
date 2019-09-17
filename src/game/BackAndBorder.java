@@ -19,6 +19,13 @@ public class BackAndBorder
     void addBackgroundColor(Graphics g)
     {
         g.setColor(Color.ORANGE);
-        g.fillRect(1,1,692,592);
+        g.fillRect(0,0,1920,1080);
+    }
+    void setBorders(Graphics g)
+    {
+        g.setColor(Color.red);
+        g.fillRect(0,0,10,1080);//left border
+        g.fillRect(0,0,1920,10);//top border
+        g.fillRect(1910,0,10,1080);//right border
     }
 }

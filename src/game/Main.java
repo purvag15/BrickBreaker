@@ -45,7 +45,7 @@ public class Main extends JFrame
             loadpics();
             try
             {
-                Thread.sleep(500000);
+                Thread.sleep(5000);
             }
             catch(Exception e)
             {
@@ -69,6 +69,7 @@ public class Main extends JFrame
         {
             g.drawImage(bg,0,0,null);
         }
+        //setBackground(g);
         addSlider(g);
         addBall(g);
     }
@@ -89,4 +90,12 @@ public class Main extends JFrame
         Ball ball=new Ball(940,780);
         ball.makeBall(g);
     }
+    
+    //Optional-if image thing doesn't work
+//    public void setBackground(Graphics g)
+//    {
+//        BackAndBorder b=new BackAndBorder();
+//        b.addBackgroundColor(g);
+//        b.setBorders(g);
+//    }
 }
