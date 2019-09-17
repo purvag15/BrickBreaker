@@ -23,7 +23,7 @@ public class Homescr extends javax.swing.JFrame {
      */
     public Homescr() {
         initComponents();
-               
+            jLabel1.setText(login.name);
 
     }    
 /**
@@ -62,7 +62,7 @@ public class Homescr extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -147,11 +147,9 @@ public class Homescr extends javax.swing.JFrame {
         jPanel1.add(jButton6);
         jButton6.setBounds(499, 541, 170, 41);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/bg.jpg"))); // NOI18N
-        jLabel4.setText("jLabel4");
-        jLabel4.setPreferredSize(new java.awt.Dimension(692, 592));
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(-170, 0, 920, 660);
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(310, 150, 51, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -233,7 +231,7 @@ public class Homescr extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
