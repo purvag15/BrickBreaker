@@ -45,7 +45,7 @@ public class Main extends JFrame
             loadpics();
             try
             {
-                Thread.sleep(5000);
+                Thread.sleep(500000);
             }
             catch(Exception e)
             {

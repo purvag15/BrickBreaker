@@ -3,6 +3,8 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -21,8 +23,8 @@ public class login extends javax.swing.JFrame {
      */
     public login() {
         initComponents();
-        jPanel1.setBackground(new Color(0,0,0,100));
-        
+        jPanel1.setBackground(new Color(0, 0, 0, 100));
+
     }
 
     public void close() {
@@ -160,11 +162,9 @@ public class login extends javax.swing.JFrame {
     static String userid;
     static String name;
     static String passwd;
-    
-
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+            
         Connection myconObj = null;
         Statement mystatObj = null;
         ResultSet myresObj = null;
@@ -185,13 +185,13 @@ public class login extends javax.swing.JFrame {
                 
                 //System.out.println(userid + "\t" + passwd);
 //            }
-                //i++;
+//                //i++;
                 String uname = jTextField2.getText();
                 char[] pwd = jPasswordField1.getPassword();
                 String password = new String(pwd);
 
                 //System.out.println(userid + passwd);
-                if (uname.equals(userid) && password.equals(passwd)) {
+                if (uname.equals(userid) && passwd.equals(passwd)) {
                     flag = 1;
                     break;
                 }
@@ -216,7 +216,6 @@ public class login extends javax.swing.JFrame {
 //         catch (SQLException e) {
 //            
 //        }
-
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
