@@ -27,7 +27,7 @@ public class Homescr extends javax.swing.JFrame {
         initComponents();
         jLabel1.setText("Break it up "+login.name+"!!");
             //jLabel1.setText("Hello "+login.name+" !");
-        jPanel2.setBackground(new Color(0, 0, 0, 100));
+        jPanel2.setBackground(new Color(240, 240, 240, 159));
 
     }    
 /**
@@ -78,6 +78,7 @@ public class Homescr extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/bg.jpg"))); // NOI18N
         jLabel5.setText("jLabel4");
@@ -248,9 +249,17 @@ public class Homescr extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(120, 20, 470, 250);
 
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 29)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 0, 51));
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 360, 250, 20);
+        jLabel1.setBounds(230, 540, 290, 41);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/bg.jpg"))); // NOI18N
+        jLabel6.setText("jLabel4");
+        jLabel6.setPreferredSize(new java.awt.Dimension(692, 592));
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(-170, 0, 920, 660);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -341,6 +350,7 @@ public class Homescr extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
