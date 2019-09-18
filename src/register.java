@@ -3,8 +3,12 @@ import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -24,13 +28,15 @@ public class register extends javax.swing.JFrame {
     public register() {
         initComponents();
     }
-/**
- * function to close the screen after switching scenes
- */
+
+    /**
+     * function to close the screen after switching scenes
+     */
     public void close() {
         WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,14 +71,13 @@ public class register extends javax.swing.JFrame {
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 22)); // NOI18N
         jLabel1.setText("Register");
 
         jLabel2.setText("Name :");
 
-        jTextField1.setText("Enter your name");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -81,7 +86,6 @@ public class register extends javax.swing.JFrame {
 
         jLabel4.setText("Username :");
 
-        jTextField2.setText("Enter username you want to set");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -89,6 +93,12 @@ public class register extends javax.swing.JFrame {
         });
 
         jLabel5.setText("Password :");
+
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Confirm password :");
 
@@ -186,7 +196,7 @@ public class register extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -203,44 +213,61 @@ public class register extends javax.swing.JFrame {
     static String name;
     static String passwd;
     static String passwdrep;
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Connection myconObj = null;
-        Statement mystatObj = null;
-        ResultSet myresObj = null;
+        PreparedStatement ps;
 
-        name = jTextField1.getText();
-        userid = jTextField2.getText();
-        passwd = String.valueOf(jPasswordField1.getPassword());
-        passwdrep = String.valueOf(jPasswordField2.getPassword());
-        
-        String query = "Insert into PURVA.login values (USERID, PSWD, NAME) VALUES pg, pg, 1234";
-
-        int flag = 0;
         try {
-            myconObj = DriverManager.getConnection("jdbc:derby://localhost:1527/BrickBreak", "purva", "purva");
-            mystatObj = myconObj.createStatement();
-            myresObj = mystatObj.executeQuery(query);
-            //mystatObj.executeQuery(querylogin);
+            String query = "INSERT INTO `login`(`USERID`, `PASSWD`, `NAME`) VALUES (?,?,?)";
+            ps = dbconnect.getConnection().prepareStatement(query);
 
-            if(passwd==passwdrep)
+            userid = jTextField2.getText();
+            name = jTextField1.getText();
+            passwd = String.valueOf(jPasswordField1.getPassword());
+            passwdrep = String.valueOf(jPasswordField2.getPassword());
+
+            ps.setString(1, userid);
+            ps.setString(2, passwd);
+            ps.setString(3, name);
+            //ps.setString(4, img);
+            
+            if(userid.equals(""))
             {
-                JOptionPane.showMessageDialog(null, "Successfully registered");
-                login l1 = new login();
-                close();
-                l1.setVisible(true);
+                JOptionPane.showMessageDialog(null, "Fill in the username!");
+            }
+            
+            else if(passwd.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Fill in the password!");
+            }
+            
+            else if(name.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Fill in you name!");
+            }
+            
+            if (passwd.equals(passwdrep)) 
+            {
+            if (ps.executeUpdate() > 0) 
+                {
+                    JOptionPane.showMessageDialog(null, "New user created\n Please login to continue.");
+                    login l1 = new login();
+                    close();
+                    l1.setVisible(true);
+                }
             }
             else
             {
-                JOptionPane.showMessageDialog(null, "Registration Failed!\n Retype Password");
+                JOptionPane.showMessageDialog(null, "Retype the password!");
             }
-
-         
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
+        } catch (SQLException ex) {
+            Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     /**
      * @param args the command line arguments
