@@ -203,8 +203,8 @@ public class login extends javax.swing.JFrame {
                 ps.setString(1, userid);
                 rs=ps.executeQuery();
                 rs.next();
-                String na=rs.getString("NAME");
-                JOptionPane.showMessageDialog(null, "Welcome "+ na);
+                name=rs.getString("NAME");
+                JOptionPane.showMessageDialog(null, "Welcome "+ name);
                 Homescr h1 = new Homescr();
                 close();
                 h1.setVisible(true);
