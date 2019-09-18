@@ -23,7 +23,7 @@ public class Homescr extends javax.swing.JFrame {
      */
     public Homescr() {
         initComponents();
-            jLabel1.setText(login.name);
+            jLabel1.setText("Hello "+login.name+" !");
 
     }    
 /**
@@ -149,7 +149,7 @@ public class Homescr extends javax.swing.JFrame {
 
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(310, 150, 51, 20);
+        jLabel1.setBounds(20, 20, 210, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

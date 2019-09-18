@@ -17,15 +17,7 @@ public class Test {
     a.setPreferredSize(new Dimension(100, 100));
     a.setMaximumSize(new Dimension(100, 100)); // set max = pref
     a.setBorder(BorderFactory.createTitledBorder("aa"));
-    JPanel b = new JPanel();
-    b.setAlignmentX(Component.CENTER_ALIGNMENT);
-    b.setPreferredSize(new Dimension(50, 50));
-    b.setMaximumSize(new Dimension(50, 50)); // set max = pref
-    b.setBorder(BorderFactory.createTitledBorder("bb"));
-
-    frame.getContentPane().add(a);
-    frame.getContentPane().add(b);
-    frame.pack();
-    frame.setVisible(true);
+  
+   
   }
 }

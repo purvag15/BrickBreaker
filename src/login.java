@@ -2,9 +2,11 @@
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.awt.Image;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /*
@@ -164,25 +166,25 @@ public class login extends javax.swing.JFrame {
     static String passwd;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            
+
         Connection myconObj = null;
         Statement mystatObj = null;
         ResultSet myresObj = null;
-        
+
         String query = "Select * from PURVA.login";
-       
+
         int flag = 0;
         try {
             myconObj = DriverManager.getConnection("jdbc:derby://localhost:1527/BrickBreak", "purva", "purva");
             mystatObj = myconObj.createStatement();
             myresObj = mystatObj.executeQuery(query);
             //mystatObj.executeQuery(querylogin);
-            
+
             while (myresObj.next()) {
                 userid = myresObj.getString("USERID");
                 passwd = myresObj.getString("PSWD");
                 name = myresObj.getString("NAME");
-                
+
                 //System.out.println(userid + "\t" + passwd);
 //            }
 //                //i++;
@@ -197,14 +199,17 @@ public class login extends javax.swing.JFrame {
                 }
             }
             if (flag == 1) {
-                JOptionPane.showMessageDialog(null, "Welcome "+name);
-//                login l1 = new login();
-//                l1.setVisible(false);
-                //close();
-                login l1=new login();
+                JOptionPane.showMessageDialog(null, "Welcome " + name);
+                login l1 = new login();
                 Homescr h1 = new Homescr();
                 close();
                 h1.setVisible(true);
+                                
+//                String link = myresObj.getString("IMG");
+//                System.out.println(link);
+//
+//                ImageIcon img = new ImageIcon(new ImageIcon(link).getImage().getScaledInstance(125, 121, Image.SCALE_DEFAULT));
+//                jLabel5.setIcon(img);
 
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid User");
