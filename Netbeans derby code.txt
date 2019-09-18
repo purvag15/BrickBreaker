@@ -1,0 +1,25 @@
+  if(userid.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Fill in the username!");
+            }
+            
+            else if(passwd.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Fill in the password!");
+            }
+            
+            else if(name.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Fill in you name!");
+            }
+            
+            if (passwd == passwdrep) 
+            {
+            if (ps.executeUpdate() > 0) 
+                {
+                    JOptionPane.showMessageDialog(null, "New user created\n Please login to continue.");
+                    login l1 = new login();
+                    close();
+                    l1.setVisible(true);
+                }
+            }

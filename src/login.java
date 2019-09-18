@@ -180,8 +180,8 @@ public class login extends javax.swing.JFrame {
         try 
         {
             String query = "SELECT `USERID`, `PASSWD` FROM `login` WHERE `USERID`=? AND `PASSWD`=?";
-            ps = dbconnect.getConnection().prepareStatement(query);
-            
+            Connection c = dbconnect.getConnection();
+                    ps=c.prepareStatement(query);
             ps.setString(1, userid);
             ps.setString(2, passwd);
             rs=ps.executeQuery();
@@ -198,11 +198,16 @@ public class login extends javax.swing.JFrame {
             
             if(flag)
             {
-                JOptionPane.showMessageDialog(null, "Welcome "+ name);
+                String query1 = "SELECT `NAME` FROM `login` WHERE `USERID`=?";
+                ps = c.prepareStatement(query1);
+                ps.setString(1, userid);
+                rs=ps.executeQuery();
+                rs.next();
+                String na=rs.getString("NAME");
+                JOptionPane.showMessageDialog(null, "Welcome "+ na);
                 Homescr h1 = new Homescr();
                 close();
                 h1.setVisible(true);
-                String query1 = "SELECT `NAME` FROM `login` WHERE `USERID`={uname}";
             }
         }
         catch (SQLException ex) 
