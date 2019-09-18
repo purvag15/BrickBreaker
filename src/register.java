@@ -216,48 +216,36 @@ public class register extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         PreparedStatement ps;
+        userid = jTextField2.getText();
+        name = jTextField1.getText();
+        passwd = String.valueOf(jPasswordField1.getPassword());
+        passwdrep = String.valueOf(jPasswordField2.getPassword());
 
         try {
             String query = "INSERT INTO `login`(`USERID`, `PASSWD`, `NAME`) VALUES (?,?,?)";
             ps = dbconnect.getConnection().prepareStatement(query);
 
-            userid = jTextField2.getText();
-            name = jTextField1.getText();
-            passwd = String.valueOf(jPasswordField1.getPassword());
-            passwdrep = String.valueOf(jPasswordField2.getPassword());
-
             ps.setString(1, userid);
             ps.setString(2, passwd);
             ps.setString(3, name);
             //ps.setString(4, img);
-            
-            if(userid.equals(""))
-            {
+
+            if (userid.equals("")) {
                 JOptionPane.showMessageDialog(null, "Fill in the username!");
-            }
-            
-            else if(passwd.equals(""))
-            {
+            } else if (passwd.equals("")) {
                 JOptionPane.showMessageDialog(null, "Fill in the password!");
-            }
-            
-            else if(name.equals(""))
-            {
+            } else if (name.equals("")) {
                 JOptionPane.showMessageDialog(null, "Fill in you name!");
             }
-            
-            if (passwd.equals(passwdrep)) 
-            {
-            if (ps.executeUpdate() > 0) 
-                {
+
+            if (passwd.equals(passwdrep)) {
+                if (ps.executeUpdate() > 0) {
                     JOptionPane.showMessageDialog(null, "New user created\n Please login to continue.");
                     login l1 = new login();
                     close();
                     l1.setVisible(true);
                 }
-            }
-            else
-            {
+            } else {
                 JOptionPane.showMessageDialog(null, "Retype the password!");
             }
         } catch (SQLException ex) {

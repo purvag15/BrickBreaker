@@ -45,7 +45,7 @@ public class Main extends JFrame
             loadpics();
             try
             {
-                Thread.sleep(5000);
+               Thread.sleep(5000);
             }
             catch(Exception e)
             {
@@ -54,7 +54,7 @@ public class Main extends JFrame
         }
         finally
         {
-            s.restoreScreen();
+            //s.restoreScreen();
         }
     }
     public void paint(Graphics g)

@@ -29,6 +29,9 @@ public class login extends javax.swing.JFrame {
 
     }
 
+    /**
+     * function to close the screen after switching scenes
+     */
     public void close() {
         WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
@@ -164,64 +167,48 @@ public class login extends javax.swing.JFrame {
     static String userid;
     static String name;
     static String passwd;
-
+    static String uname;
+    static boolean flag=false;
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        Connection myconObj = null;
-        Statement mystatObj = null;
-        ResultSet myresObj = null;
+        PreparedStatement ps;
+        ResultSet rs;
 
-        String query = "Select * from PURVA.login";
-
-        int flag = 0;
-        try {
-            myconObj = DriverManager.getConnection("jdbc:derby://localhost:1527/BrickBreak", "purva", "purva");
-            mystatObj = myconObj.createStatement();
-            myresObj = mystatObj.executeQuery(query);
-            //mystatObj.executeQuery(querylogin);
-
-            while (myresObj.next()) {
-                userid = myresObj.getString("USERID");
-                passwd = myresObj.getString("PSWD");
-                name = myresObj.getString("NAME");
-
-                //System.out.println(userid + "\t" + passwd);
-//            }
-//                //i++;
-                String uname = jTextField2.getText();
-                char[] pwd = jPasswordField1.getPassword();
-                String password = new String(pwd);
-
-                //System.out.println(userid + passwd);
-                if (uname.equals(userid) && passwd.equals(passwd)) {
-                    flag = 1;
-                    break;
-                }
+        userid = jTextField2.getText();
+        passwd = String.valueOf(jPasswordField1.getPassword());
+        try 
+        {
+            String query = "SELECT `USERID`, `PASSWD` FROM `login` WHERE `USERID`=? AND `PASSWD`=?";
+            ps = dbconnect.getConnection().prepareStatement(query);
+            
+            ps.setString(1, userid);
+            ps.setString(2, passwd);
+            rs=ps.executeQuery();
+            
+            if(rs.next())
+            {
+                uname=userid;
+                flag=true;
             }
-            if (flag == 1) {
-                JOptionPane.showMessageDialog(null, "Welcome " + name);
-                login l1 = new login();
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Wrong username/password");
+            }
+            
+            if(flag)
+            {
+                JOptionPane.showMessageDialog(null, "Welcome "+ name);
                 Homescr h1 = new Homescr();
                 close();
                 h1.setVisible(true);
-                                
-//                String link = myresObj.getString("IMG");
-//                System.out.println(link);
-//
-//                ImageIcon img = new ImageIcon(new ImageIcon(link).getImage().getScaledInstance(125, 121, Image.SCALE_DEFAULT));
-//                jLabel5.setIcon(img);
-
-            } else {
-                JOptionPane.showMessageDialog(null, "Invalid User");
+                String query1 = "SELECT `NAME` FROM `login` WHERE `USERID`={uname}";
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
         }
-//         catch (SQLException e) {
-//            
-//        }
-
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
