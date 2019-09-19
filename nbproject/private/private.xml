@@ -3,15 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Purva/Documents/NetBeansProjects/HomeScreen/src/game/Level.java</file>
-            <file>file:/C:/Users/Purva/Documents/NetBeansProjects/HomeScreen/src/Homescr.java</file>
-            <file>file:/C:/Users/Purva/Documents/NetBeansProjects/HomeScreen/src/game/Slider.java</file>
-            <file>file:/C:/Users/Purva/Documents/NetBeansProjects/HomeScreen/src/login.java</file>
-            <file>file:/C:/Users/Purva/Documents/NetBeansProjects/HomeScreen/src/game/Screen.java</file>
-            <file>file:/C:/Users/Purva/Documents/NetBeansProjects/HomeScreen/src/game/GamePlay.java</file>
-            <file>file:/C:/Users/Purva/Documents/NetBeansProjects/HomeScreen/src/game/bg1.jpg</file>
-            <file>file:/C:/Users/Purva/Documents/NetBeansProjects/HomeScreen/src/game/Main.java</file>
-            <file>file:/C:/Users/Purva/Documents/NetBeansProjects/HomeScreen/src/levels.java</file>
+            <file>file:/E:/BrickBreaker/src/game/Level.java</file>
+            <file>file:/E:/BrickBreaker/src/game/Slider.java</file>
+            <file>file:/E:/BrickBreaker/src/game/BackAndBorder.java</file>
+            <file>file:/E:/BrickBreaker/src/Homescr.java</file>
+            <file>file:/E:/BrickBreaker/src/levels.java</file>
+            <file>file:/E:/BrickBreaker/src/game/Advanced.java</file>
+            <file>file:/E:/BrickBreaker/src/game/Ball.java</file>
+            <file>file:/E:/BrickBreaker/src/game/Final.java</file>
+            <file>file:/E:/BrickBreaker/src/game/Brick.java</file>
+            <file>file:/E:/BrickBreaker/src/game/Map.java</file>
+            <file>file:/E:/BrickBreaker/src/login.java</file>
+            <file>file:/E:/BrickBreaker/src/dbconnect.java</file>
         </group>
     </open-files>
 </project-private>

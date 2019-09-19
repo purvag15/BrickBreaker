@@ -5,6 +5,7 @@
  */
 package game;
 
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -21,66 +22,31 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.Component;
+import java.io.IOException;
 /**
  *
  * @author snigd
  */
-public class Level extends JPanel implements KeyListener,ActionListener,MouseMotionListener
+public class Level extends JPanel
 {
-    private boolean play=false;//play is true when we have pressed the left or right button
-    static int levelNo;
-    private Timer timer;
-    private int delay=4;//on decreasing delay variable speed of ball increases
-    Level()
+    Slider s;
+    Ball ball;
+    int levelNo;
+    Level(Graphics g,int k,int ballX,int ballY) throws IOException
     {
-        addKeyListener(this);
-//        addMouseMotionListener(this);
-        setFocusable(true);//This means thatwhenever a keyboard action is performed then the focus of that action is set on our panel and not anywhere else
-        setFocusTraversalKeysEnabled(false);//setFocusTraversalKeysEnabled() decides whether or not focus traversal keys (TAB key, SHIFT+TAB, etc.) are allowed to be used when
-        //the current Component has focus.
-        timer=new Timer(delay,this);//(delay parameter, action listener)
-        timer.start();
+        addSlider(g,k);
+        addBall(g,ballX,ballY);
+        Map m=new Map();
+        m.makeMap1(g);
     }
-    void setLevelNo()
+    void addSlider(Graphics g,int k)
     {
-        levelNo=1;
+        s=new Slider();
+        s.createSlider(g,k);
     }
-
-    @Override
-    public void keyTyped(KeyEvent e) 
+    void addBall(Graphics g,int ballX,int ballY)
     {
-        System.out.println("Key Typed");
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) 
-    {
-        play=s.performKeyPress(e,play);
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) 
-    {
-        System.out.println("Key Released");
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) 
-    {
-        timer.start();
-        
-        repaint();
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) 
-    {
-        System.out.println("Mouse Dragged");
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) 
-    {
-        System.out.println("Mouse Moved");
+        ball=new Ball(ballX,ballY);
+        ball.makeBall(g);
     }
 }
