@@ -213,11 +213,11 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
     static String userid;
-    static String name="Guest";
+    static String name = "Guest";
     static String passwd;
     static String uname;
-    static boolean flag=false;
-    
+    static boolean flag = false;
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         PreparedStatement ps;
@@ -225,41 +225,34 @@ public class login extends javax.swing.JFrame {
 
         userid = jTextField2.getText();
         passwd = String.valueOf(jPasswordField1.getPassword());
-        try 
-        {
+        try {
             String query = "SELECT `USERID`, `PASSWD` FROM `login` WHERE `USERID`=? AND `PASSWD`=PASSWORD(?)";
             Connection c = dbconnect.getConnection();
-                    ps=c.prepareStatement(query);
+            ps = c.prepareStatement(query);
             ps.setString(1, userid);
             ps.setString(2, passwd);
-            rs=ps.executeQuery();
-            
-            if(rs.next())
-            {
-                uname=userid;
-                flag=true;
-            }
-            else
-            {
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                uname = userid;
+                flag = true;
+            } else {
                 JOptionPane.showMessageDialog(null, "Wrong username/password");
             }
-            
-            if(flag)
-            {
+
+            if (flag) {
                 String query1 = "SELECT `NAME` FROM `login` WHERE `USERID`=?";
                 ps = c.prepareStatement(query1);
                 ps.setString(1, userid);
-                rs=ps.executeQuery();
+                rs = ps.executeQuery();
                 rs.next();
-                name=rs.getString("NAME");
-                JOptionPane.showMessageDialog(null, "Welcome "+ name);
+                name = rs.getString("NAME");
+                JOptionPane.showMessageDialog(null, "Welcome " + name);
                 Homescr h1 = new Homescr();
                 close();
                 h1.setVisible(true);
             }
-        }
-        catch (SQLException ex) 
-        {
+        } catch (SQLException ex) {
             Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -269,16 +262,16 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-                register r1 = new register();
-                close();
-                r1.setVisible(true);
+        register r1 = new register();
+        close();
+        r1.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-                JOptionPane.showMessageDialog(null, "Welcome Guest!");
-                Homescr h1 = new Homescr();
-                close();
-                h1.setVisible(true);
+        JOptionPane.showMessageDialog(null, "Welcome Guest!");
+        Homescr h1 = new Homescr();
+        close();
+        h1.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
