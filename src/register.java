@@ -221,16 +221,16 @@ public class register extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PreparedStatement ps;
+        PreparedStatement ps, ps1;
         userid = jTextField2.getText();
         name = jTextField1.getText();
         passwd = String.valueOf(jPasswordField1.getPassword());
         passwdrep = String.valueOf(jPasswordField2.getPassword());
 
         try {
-            String query = "INSERT INTO `login`(`USERID`, `PASSWD`, `NAME`) VALUES (?,?,?)";
-            ps = dbconnect.getConnection().prepareStatement(query);
-
+            String query = "INSERT INTO `login`(`USERID`, `PASSWD`, `NAME`) VALUES (?,PASSWORD(?),?)";
+            Connection c=dbconnect.getConnection();
+            ps = c.prepareStatement(query);
             ps.setString(1, userid);
             ps.setString(2, passwd);
             ps.setString(3, name);
@@ -245,6 +245,8 @@ public class register extends javax.swing.JFrame {
             }
 
             if (passwd.equals(passwdrep)) {
+                
+                
                 if (ps.executeUpdate() > 0) {
                     JOptionPane.showMessageDialog(null, "New user created\n Please login to continue.");
                     login l1 = new login();

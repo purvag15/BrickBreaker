@@ -113,10 +113,20 @@ public class login extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(102, 102, 102));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Register now !");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(102, 102, 102));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Play As Guest");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -130,8 +140,8 @@ public class login extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(241, 241, 241)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))))
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -173,11 +183,11 @@ public class login extends javax.swing.JFrame {
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel1);
-        jPanel1.setBounds(50, 60, 587, 500);
+        jPanel1.setBounds(50, 60, 592, 500);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/bg.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -203,7 +213,7 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
     static String userid;
-    static String name;
+    static String name="Guest";
     static String passwd;
     static String uname;
     static boolean flag=false;
@@ -217,7 +227,7 @@ public class login extends javax.swing.JFrame {
         passwd = String.valueOf(jPasswordField1.getPassword());
         try 
         {
-            String query = "SELECT `USERID`, `PASSWD` FROM `login` WHERE `USERID`=? AND `PASSWD`=?";
+            String query = "SELECT `USERID`, `PASSWD` FROM `login` WHERE `USERID`=? AND `PASSWD`=PASSWORD(?)";
             Connection c = dbconnect.getConnection();
                     ps=c.prepareStatement(query);
             ps.setString(1, userid);
@@ -242,11 +252,6 @@ public class login extends javax.swing.JFrame {
                 rs=ps.executeQuery();
                 rs.next();
                 name=rs.getString("NAME");
-                String query4 = "UPDATE login\n" +
-                            "SET `PASSWD` = PASSWORD(`PASSWD`);";
-                ps = c.prepareStatement(query4);
-                ps.executeUpdate(query4);
-
                 JOptionPane.showMessageDialog(null, "Welcome "+ name);
                 Homescr h1 = new Homescr();
                 close();
@@ -262,6 +267,19 @@ public class login extends javax.swing.JFrame {
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+                register r1 = new register();
+                close();
+                r1.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+                JOptionPane.showMessageDialog(null, "Welcome Guest!");
+                Homescr h1 = new Homescr();
+                close();
+                h1.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
