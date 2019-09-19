@@ -2,6 +2,10 @@
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,7 +14,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -26,9 +32,12 @@ public class register extends javax.swing.JFrame {
     /**
      * Creates new form register
      */
+    //create a variable to store img path in it
+    String image_path = null;
+
     public register() {
         initComponents();
-        
+
         jPanel2.setBackground(new Color(0, 0, 0, 100));
     }
 
@@ -143,6 +152,11 @@ public class register extends javax.swing.JFrame {
         jLabel8.setText("Profile photo :");
 
         jButton2.setText("Upload");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("image path");
 
@@ -248,13 +262,27 @@ public class register extends javax.swing.JFrame {
         passwdrep = String.valueOf(jPasswordField2.getPassword());
 
         try {
-            String query = "INSERT INTO `login`(`USERID`, `PASSWD`, `NAME`) VALUES (?,PASSWORD(?),?)";
-            Connection c=dbconnect.getConnection();
+            String query = "INSERT INTO `login`(`USERID`, `PASSWD`, `NAME`, `IMG`) VALUES (?,PASSWORD(?),?, ?)";
+            Connection c = dbconnect.getConnection();
             ps = c.prepareStatement(query);
             ps.setString(1, userid);
             ps.setString(2, passwd);
             ps.setString(3, name);
-            //ps.setString(4, img);
+
+            try {
+                if (image_path != null)
+                {
+                    InputStream image = new FileInputStream(new File(image_path));
+                    ps.setBlob(4, image);
+                } else 
+                {
+                    ps.setNull(4, java.sql.Types.NULL);
+                }
+            } 
+            catch (FileNotFoundException ex)
+            {
+                Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             if (userid.equals("")) {
                 JOptionPane.showMessageDialog(null, "Fill in the username!");
@@ -265,8 +293,7 @@ public class register extends javax.swing.JFrame {
             }
 
             if (passwd.equals(passwdrep)) {
-                
-                
+
                 if (ps.executeUpdate() > 0) {
                     JOptionPane.showMessageDialog(null, "New user created\n Please login to continue.");
                     login l1 = new login();
@@ -292,6 +319,26 @@ public class register extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String path = null;
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+
+        //file extension
+        //FileNameExtensionFilter extension = new FileNameExtensionFilter("*Images", ".jpg", ".png", ".jpeg");
+        //chooser.addChoosableFileFilter(extension);
+
+        int filestate = chooser.showSaveDialog(null);
+
+        //if user selects an image
+        if (filestate == JFileChooser.APPROVE_OPTION) {
+            File selectedImage = chooser.getSelectedFile();
+            path = selectedImage.getAbsolutePath();
+            jLabel10.setText(path);
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
     static String userid;
     static String name;
     static String passwd;
