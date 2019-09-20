@@ -34,10 +34,12 @@ public class Final extends JPanel implements KeyListener, ActionListener, MouseL
     private boolean loaded;
     static int sliderX=860;
     static int ballX=940,ballY=880,ballXdir=-2,ballYdir=-5;
+    int levelNo;
     Level l;
     
-    public Final() 
+    public Final(int levelNo) 
     {
+        this.levelNo=levelNo;
         addKeyListener(this);
         addMouseListener(this);
         addMouseMotionListener(this);
@@ -63,14 +65,16 @@ public class Final extends JPanel implements KeyListener, ActionListener, MouseL
         try 
         {
             //setBackground(g);
-            l=new Level(g,sliderX,ballX,ballY);
+            l=new Level(g,sliderX,ballX,ballY,levelNo);
         } 
         catch (IOException ex) 
         {
             Logger.getLogger(Final.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        System.out.println("SliderX="+sliderX);
         loadpics();
+        System.out.println("Final Score="+score);
+        playMusic("E:\\BrickBreaker\\src\\game\\end.wav");
+        g.dispose();
     }
     
     private void loadpics() 
@@ -101,7 +105,7 @@ public class Final extends JPanel implements KeyListener, ActionListener, MouseL
         {
             if (new Rectangle(ballX,ballY,40,40).intersects(new Rectangle(sliderX, 920,200,8)))//When the slider rectangle had a height of 8 when the ball was falling down and it touched the bottom part of the slider it used to slide and again reflect
             {
-                playMusic("C:\\Users\\kaulv\\Documents\\NetBeansProjects\\BrickBreaker\\src\\resources\\effect1.wav");
+                playMusic("E:\\BrickBreaker\\src\\game\\panel.wav");
                 ballYdir=-ballYdir;
                 
                 ballXdir=ballXdir+((ballX-sliderX-50)/10);
@@ -155,19 +159,24 @@ public class Final extends JPanel implements KeyListener, ActionListener, MouseL
             ballX=l.ball.returnX();
             ballY=l.ball.returnY();
         }
+        if (ballY>930)
+        {
+            System.exit(1);
+        }
+        
         repaint();
     }
     
     @Override
     public void keyTyped(KeyEvent e) 
     {
-        System.out.println("Key Typed");
+        //System.out.println("Key Typed");
     }
     
      @Override
     public void keyReleased(KeyEvent e) 
     {
-        System.out.println("Key Released");
+        //System.out.println("Key Released");
     }
     
     @Override
@@ -205,20 +214,20 @@ public class Final extends JPanel implements KeyListener, ActionListener, MouseL
     {
         if ((e.getX()>=l.s.sliderX) && (e.getX()<=l.s.sliderX+80))
         {
-            System.out.println("Mouse Clicked");
+            //System.out.println("Mouse Clicked");
         }
     }
 
     @Override
     public void mousePressed(MouseEvent e) 
     {
-        System.out.println("Mouse Pressed");
+        //System.out.println("Mouse Pressed");
     }
 
     @Override
     public void mouseReleased(MouseEvent e) 
     {
-        System.out.println("Mouse Released");
+        //System.out.println("Mouse Released");
     }
 
     @Override
@@ -234,7 +243,7 @@ public class Final extends JPanel implements KeyListener, ActionListener, MouseL
     @Override
     public void mouseExited(MouseEvent e) 
     {
-        System.out.println("Mouse Exited");
+       // System.out.println("Mouse Exited");
     }
 
     @Override
@@ -242,14 +251,25 @@ public class Final extends JPanel implements KeyListener, ActionListener, MouseL
     {
         if ((e.getX()>=l.s.sliderX) && (e.getX()<=l.s.sliderX+80))
         {
-            System.out.println("Mouse Dragged");
+            //System.out.println("Mouse Dragged");
         }
     }
 
     @Override
     public void mouseMoved(MouseEvent e) 
     {
-        
+        if (e.getX()>=1720)
+        {
+            sliderX=1720;
+        }
+        else if(e.getX()<=200)
+        {
+            sliderX=0;
+        }
+        else 
+        {
+            sliderX=e.getX()-100;
+        }
     }
 
    

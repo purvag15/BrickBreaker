@@ -32,12 +32,24 @@ public class Level extends JPanel
     Slider s;
     Ball ball;
     int levelNo;
-    Level(Graphics g,int k,int ballX,int ballY) throws IOException
+    Level(Graphics g,int k,int ballX,int ballY,int levelNo) throws IOException
     {
+        this.levelNo=levelNo;
         addSlider(g,k);
         addBall(g,ballX,ballY);
         Map m=new Map();
-        m.makeMap1(g);
+        if (levelNo==1)
+        {
+            m.makeMap1(g);
+        }
+        else if (levelNo==2)
+        {
+            m.makeMap2(g);
+        }
+        else
+        {
+            m.makeMap3(g);
+        }
     }
     void addSlider(Graphics g,int k)
     {

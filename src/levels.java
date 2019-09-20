@@ -1,7 +1,9 @@
 
+import game.Final;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -54,9 +56,19 @@ public class levels extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
         jButton1.setText("2");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
         jButton2.setText("3");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
         jButton3.setText("1");
@@ -125,7 +137,15 @@ public class levels extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        int i=1;
+                    JFrame obj=new JFrame();
+        obj.setResizable(false);
+        obj.setBounds(0,0,1920,1080);
+        Final gameplay=new Final(i);
+        obj.setTitle("Brick Breaker");
+        obj.setVisible(true);
+        obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        obj.add(gameplay);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -133,6 +153,31 @@ public class levels extends javax.swing.JFrame {
         Homescr h1=new Homescr();
         h1.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int i=2;    
+        JFrame obj=new JFrame();
+        obj.setResizable(false);
+        obj.setBounds(0,0,1920,1080);
+        Final gameplay=new Final(i);
+        obj.setTitle("Brick Breaker");
+        obj.setVisible(true);
+        obj.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        obj.add(gameplay);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       int i=3;    
+        JFrame obj=new JFrame();
+        obj.setResizable(false);
+        obj.setBounds(0,0,1920,1080);
+        Final gameplay=new Final(i);
+        obj.setTitle("Brick Breaker");
+        obj.setVisible(true);
+        obj.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        obj.add(gameplay);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

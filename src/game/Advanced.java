@@ -5,6 +5,7 @@
  */
 package game;
 
+import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 
 /**
@@ -18,7 +19,7 @@ public class Advanced
         JFrame obj=new JFrame();
         obj.setResizable(false);
         obj.setBounds(0,0,1920,1080);
-        Final gameplay=new Final();
+        Final gameplay=new Final(3);
         obj.setTitle("Brick Breaker");
         obj.setVisible(true);
         obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

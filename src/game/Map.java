@@ -20,25 +20,32 @@ public class Map
     char [] map1={'a','b','c','a','b','c','a'};
     char [] map2={'a','a','b','b','c','c','a'};
     char [] map3={'a','a','a','b','b','b','c'};
-    int [][]A=new int[7][19];
+    int [][]A=new int[7][21];
     void addBrick(Graphics g,int x,int y,char type)
     {
-        Brick j=new Brick();
         Rectangle brickRect=new Rectangle(x,y,70,60);
         Rectangle ballRect=new Rectangle(Final.ballX,Final.ballY,40,40);
         if (brickRect.intersects(ballRect))
         {
-            Final.score++;
-            if ((Final.ballX+39<=brickRect.x) || Final.ballX +1>=brickRect.x+brickRect.width)
-            {
-                Final.ballXdir=-Final.ballXdir;
-            }
-            else
-            {
-                Final.ballYdir=-Final.ballYdir;
-            }
+            Final.ballXdir=-Final.ballXdir;
+            Final.ballYdir=-Final.ballYdir;
+            playMusic("E:\\BrickBreaker\\src\\game\\brick.wav");
+            A[(y-210)/60][(x-150)/70]=1;
+            Final.score+=5;
         }
-            j.makeBrick(g,type,x,y);
+        for (int i=0;i<7;i++)
+        {
+            for (int j=0;j<21;j++)
+            {
+                System.out.print(A[i][j]+"\t");
+                if (A[i][j]==0)
+                {
+                    Brick h=new Brick();
+                    h.makeBrick(g, type, x, y);
+                }
+            }
+            System.out.println("");
+        }
     }
     public void toRight(Graphics g,int x,int y,int n) throws IOException
     {
@@ -48,6 +55,7 @@ public class Map
             type=map1[i];
             x=x+70;
             addBrick(g,x,y,type);
+            
         }
         brickX=x;
         brickY=y;
@@ -60,6 +68,7 @@ public class Map
             type=map1[i];
             x=x-70;
             addBrick(g,x,y,type);
+            
         }
         brickX=x;
         brickY=y;
@@ -72,6 +81,7 @@ public class Map
             type=map1[i];
             y=y-60;
             addBrick(g,x,y,type);
+            
         }
         brickX=x;
         brickY=y;
@@ -84,6 +94,7 @@ public class Map
             type=map1[i];
             y=y+60;
             addBrick(g,x,y,type);
+            
         }
         brickX=x;
         brickY=y;
@@ -94,9 +105,9 @@ public class Map
         for (int i=0;i<n;i++)
         {
             type=map1[i];
+            addBrick(g,x,y,type);
             x=x+70;
             y=y+60;
-            addBrick(g,x,y,type);
         }
         brickX=x;
         brickY=y;
@@ -107,9 +118,10 @@ public class Map
         for (int i=0;i<n;i++)
         {
             type=map1[i];
-            x=x-70;
+             x=x-70;
             y=y+60;
             addBrick(g,x,y,type);
+           
         }
         brickX=x;
         brickY=y;
@@ -123,6 +135,7 @@ public class Map
             x=x+70;
             y=y-60;
             addBrick(g,x,y,type);
+            
         }
         brickX=x;
         brickY=y;
@@ -212,5 +225,9 @@ public class Map
         toRight(g,brickX,brickY,3);
         toUp(g,brickX,brickY,6);
         toLeft(g,brickX,brickY,3);
+    }
+
+    private void playMusic(String eBrickBreakersrcgamebrickwav) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
